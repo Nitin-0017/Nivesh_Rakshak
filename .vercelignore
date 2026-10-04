@@ -1,0 +1,7 @@
+.env*
+.git
+.openai
+android
+tests
+*.zip
+node_modules

@@ -1,0 +1,15 @@
+.sites-runtime/
+node_modules/
+*.log
+android/.gradle/
+android/local.properties
+android/**/build/
+.vercel
+.env*
+
+# Keep the safe setup template in Git
+!.env.example
+.DS_Store
+*.zip
+.env
+dist/ml-worker.mjs

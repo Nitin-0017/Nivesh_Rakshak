@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {publicIP,cleanURL} from '../lib/link-reader.mjs';
+test('link reader rejects private and special addresses including mapped IPv6',()=>{for(const ip of ['127.0.0.1','10.0.0.1','169.254.169.254','192.168.1.2','::1','::ffff:127.0.0.1','fc00::1','0.0.0.0'])assert.equal(publicIP(ip),false,ip);assert.equal(publicIP('8.8.8.8'),true);});
+test('link reader disallows credentials, tokens, ports and non-HTTPS protocols',()=>{for(const u of ['http://example.com','https://u:p@example.com','https://example.com:8443','https://example.com/?token=abc','file:///etc/passwd'])assert.throws(()=>cleanURL(u));assert.equal(cleanURL('https://example.com/offer').hostname,'example.com');});

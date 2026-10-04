@@ -1,0 +1,25 @@
+{
+  "name": "nivesh-rakshak",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check dist/app.mjs && node --check dist/core.mjs && node --check dist/vault.mjs && node --check dist/auth.mjs && node --check dist/boot.mjs && node --check dist/login.mjs && node --check dist/voice.mjs && node --check dist/ml-ui.mjs && node --check src/ml/worker.mjs && node --check dist/model-score.mjs",
+    "serve": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "build": "node scripts/build-ocr.mjs && node scripts/build-ml.mjs && node scripts/build-auth.mjs && npm run check",
+    "evaluate:ml": "node scripts/evaluate-ml.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.0",
+    "ipaddr.js": "^2.5.0",
+    "linkedom": "^0.18.13",
+    "tesseract.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}
